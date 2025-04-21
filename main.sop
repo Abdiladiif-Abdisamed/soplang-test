@@ -1,0 +1,145 @@
+door result = add(10, 15)
+qor("10 + 15 = " + qoraal(result))
+qor("")
+
+
+howl calculateAverage(numbers) {
+    door sum = 0
+    door count = numbers.length()
+
+    ku_celi i min 0 ilaa count - 1 {
+        sum = sum + numbers[i]
+    }
+
+    soo_celi sum / count
+}
+
+calculateAverage()
+
+
+
+howl getLetterGrade(score) {
+    haddii (score >= 90) {
+        soo_celi "A"
+    } haddii_kale (score >= 80) {
+        soo_celi "B"
+    } haddii_kale (score >= 70) {
+        soo_celi "C"
+    } haddii_kale (score >= 60) {
+        soo_celi "D"
+    } haddii_kalena {
+        soo_celi "F"
+    }
+}
+
+
+
+door university = {
+    "name": "Somali National University",
+    "location": "Mogadishu",
+    "established": 1954,
+    "studentCount": 15000,
+    "faculties": [
+        {
+            "name": "Faculty of Computer Science",
+            "departments": ["Computer Science", "Information Technology", "Artificial Intelligence"],
+            "professors": [
+                {
+                    "name": "Dr. Sharafdin Yusuf",
+                    "age": 45,
+                    "courses": [
+                        {
+                            "code": "CS101",
+                            "title": "Introduction to Programming",
+                            "credits": 3,
+                            "students": 120
+                        },
+                        {
+                            "code": "CS303",
+                            "title": "Advanced Algorithms",
+                            "credits": 4,
+                            "students": 80
+                        }
+                    ],
+                    "publications": 28,
+                    "contactInfo": {
+                        "email": "sharafdin@snu.edu.so",
+                        "phone": "+252612345678",
+                        "office": "Building A, Room 305"
+                    }
+                },
+                {
+                    "name": "Dr. Mohamed Nur",
+                    "age": 52,
+                    "courses": [
+                        {
+                            "code": "CS205",
+                            "title": "Database Systems",
+                            "credits": 4,
+                            "students": 95
+                        }
+                    ],
+                    "publications": 15,
+                    "contactInfo": {
+                        "email": "mohamed@snu.edu.so",
+                        "phone": "+252623456789",
+                        "office": "Building B, Room 210"
+                    }
+                }
+            ],
+            "dean": {
+                "name": "Prof. Yusuf Ali",
+                "age": 58,
+                "yearsInPosition": 7
+            }
+        },
+        {
+            "name": "Faculty of Medicine",
+            "departments": ["General Medicine", "Surgery", "Pediatrics"],
+            "professors": [
+                {
+                    "name": "Dr. Fawzia Hassan",
+                    "age": 49,
+                    "specialization": "Cardiology"
+                }
+            ],
+            "dean": {
+                "name": "Prof. Abdirahman Mohamed",
+                "age": 62,
+                "yearsInPosition": 10
+            }
+        }
+    ],
+    "searchProfessor": howl(name) {
+        ku_celi f min 0 ilaa this.faculties.length() - 1 {
+            door faculty = this.faculties[f]
+            ku_celi p min 0 ilaa faculty.professors.length() - 1 {
+                door professor = faculty.professors[p]
+                haddii (professor.name.includes(name)) {
+                    soo_celi {
+                        "found": true,
+                        "professor": professor,
+                        "faculty": faculty.name
+                    }
+                }
+            }
+        }
+        soo_celi {
+            "found": false,
+            "message": "Professor not found"
+        }
+    },
+    "countCourses": howl() {
+        door totalCourses = 0
+        ku_celi f min 0 ilaa this.faculties.length() - 1 {
+            door faculty = this.faculties[f]
+            ku_celi p min 0 ilaa faculty.professors.length() - 1 {
+                door professor = faculty.professors[p]
+                haddii (professor.courses) {
+                    totalCourses = totalCourses + professor.courses.length()
+                }
+            }
+        }
+        soo_celi totalCourses
+    }
+}
